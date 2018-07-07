@@ -16,6 +16,10 @@ class ViewController: UIViewController {
     var timer_sec: Float = 0
     //連続再生時、一枚の写真を表示する秒数
     let b: Float = 2.0
+    //再生、停止を分けるための変数(何回ボタンを押したか、回数を保存する変数)
+    var Loop: Int = 0
+    //再生、停止ボタンを押した回数が偶数か奇数か判断するための変数
+    var Guki: Int = 0
 //-----------------------------------------------------------------------------------------
     
     
@@ -122,8 +126,26 @@ class ViewController: UIViewController {
     
 //再生を行います
 @IBAction func StartStop(_ sender: Any) {
+    //ボタンを押した回数をLoopに保存する
+    Loop += 1
+    //ボタンを押した回数が偶数か奇数かを判断する
+    //Gukiが1である場合、ボタンを押した回数は奇数でありタイマーが作動する
+    //GUkiが2である場合、ボタンを押した回数は偶数でありタイマーはストップする
+    Guki = Loop % 2
+    
+    if Guki == 1 {
 // タイマー関数の作成、始動
-Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        if self.timer == nil {
+self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        }
+        
+        } else {
+        //タイマーを破棄する
+        if self.timer !== nil {
+            self.timer.invalidate()
+            self.timer = nil
+        }
+    }
 }
 //--------------------------------------------------------------------------------------------
 
