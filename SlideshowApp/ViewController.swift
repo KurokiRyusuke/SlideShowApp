@@ -7,6 +7,9 @@ class ViewController: UIViewController {
 
     //写真の番号を指定する変数Numberを宣言
     var Number: Int = 1
+    //写真の枚数を宣言
+    let a: Int = 20
+//-----------------------------------------------------------------------------------------
     
     
 //viewDisLoad------------------------------------------------------------------------------
@@ -18,6 +21,7 @@ class ViewController: UIViewController {
         var image = UIImage(named: "1.jpg")
         Picture.image = image
     }
+//-----------------------------------------------------------------------------------------
     
     
 //MemoryWarning----------------------------------------------------------------------------
@@ -25,11 +29,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+//-----------------------------------------------------------------------------------------
+    
     
 //「進む」ボタン------------------------------------------------------------------------------
     @IBAction func Go(_ sender: Any) {
-        if Number < 20 {
+        if Number < a {
         Number += 1
         var image = UIImage(named: "\(Number).jpg")
         Picture.image = image
@@ -39,6 +44,8 @@ class ViewController: UIViewController {
         Picture.image = image
         }
     }
-
+//------------------------------------------------------------------------------------------
+    
+    
 }
 
