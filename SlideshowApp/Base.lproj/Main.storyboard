@@ -30,7 +30,9 @@
                                     <constraint firstAttribute="height" constant="30" id="ika-VR-S2h"/>
                                     <constraint firstAttribute="width" constant="66" id="uLF-qz-PCX"/>
                                 </constraints>
-                                <state key="normal" title="再生/停止"/>
+                                <state key="normal" title="再生/停止">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="StartStop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8u5-OF-nlR"/>
                                 </connections>
@@ -41,7 +43,9 @@
                                     <constraint firstAttribute="height" constant="30" id="ocv-HE-RCk"/>
                                     <constraint firstAttribute="width" constant="31" id="s6H-Je-BxK"/>
                                 </constraints>
-                                <state key="normal" title="進む"/>
+                                <state key="normal" title="進む">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="Go:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mlu-Px-uPa"/>
                                 </connections>
@@ -52,7 +56,9 @@
                                     <constraint firstAttribute="height" constant="30" id="Hhk-sJ-Kci"/>
                                     <constraint firstAttribute="width" constant="31" id="Mmr-3x-akG"/>
                                 </constraints>
-                                <state key="normal" title="戻る"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" red="1" green="0.26691539009999998" blue="0.3307940855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="Back:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5i-bC-vh5"/>
                                 </connections>
@@ -65,7 +71,7 @@
                                     <constraint firstAttribute="height" constant="21" id="thU-k2-nay"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QE-OT-fEZ">
@@ -75,7 +81,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="geI-GM-ofG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="3P4-Lc-LqI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PWI-Ee-94h" secondAttribute="bottom" constant="50" id="6Z6-CL-0Bt"/>
@@ -126,13 +132,15 @@
                                     <constraint firstAttribute="width" constant="31" id="0ff-CN-WBz"/>
                                     <constraint firstAttribute="height" constant="30" id="N4y-CU-45Z"/>
                                 </constraints>
-                                <state key="normal" title="戻る"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="q8C-U4-kWc" kind="unwind" unwindAction="GoBack:" id="OHe-qI-h4P"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GJt-QI-gb1" firstAttribute="bottom" secondItem="R0T-4c-CyO" secondAttribute="bottom" constant="60" id="6CG-Od-cJP"/>
                             <constraint firstItem="mqX-Ab-OGx" firstAttribute="centerX" secondItem="R0T-4c-CyO" secondAttribute="centerX" id="JR6-hc-Ydi"/>
@@ -143,12 +151,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GJt-QI-gb1"/>
                     </view>
+                    <connections>
+                        <outlet property="BigPicture" destination="R0T-4c-CyO" id="yi3-mX-cAK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bbt-Rw-qMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="q8C-U4-kWc" userLabel="Exit" sceneMemberID="exit"/>
                 <pinchGestureRecognizer id="A0C-4y-qTP"/>
             </objects>
-            <point key="canvasLocation" x="1140" y="134"/>
+            <point key="canvasLocation" x="892" y="134"/>
         </scene>
     </scenes>
     <resources>

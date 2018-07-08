@@ -33,7 +33,12 @@ class ViewController: UIViewController {
     
         //画像ファイルを読み込む
         var image = UIImage(named: "1.jpg")
+        //Pictureに値を受け渡す
         Picture.image = image
+        //Viewサイズを画像サイズに合わせる
+        Picture.contentMode = UIViewContentMode.scaleAspectFit
+        //画像サイズに関する記述は以下サイトにて確認することができる
+        //http://blog.officekoma.co.jp/2016/10/swiftuiimageviewcontentmode.html
         //ラベルに1番と記載する
         PictureNumber.text = String("1 / \(a)")
         
@@ -51,10 +56,10 @@ class ViewController: UIViewController {
     
     
 //「進む」ボタン------------------------------------------------------------------------------
-//ボタンを押すたびに、番号が１つ上の写真に移動します
+//ボタンを押すたびに、番号が１つ上の写真に移動
     @IBAction func Go(_ sender: Any) {
         if Number < a {
-        //番号がa以下であれば次の番号に移動します
+        //番号がa以下であれば次の番号に移動
         Number += 1
         var image = UIImage(named: "\(Number).jpg")
         Picture.image = image
@@ -62,7 +67,7 @@ class ViewController: UIViewController {
         PictureNumber.text = String(Number) + " / \(a)"
         
         } else {
-        //番号が枚数を超えた時、1番の写真に戻ります
+        //番号が枚数を超えた時、1番の写真に戻る
         Number = 1
         var image = UIImage(named: "1.jpg")
         Picture.image = image
@@ -74,10 +79,10 @@ class ViewController: UIViewController {
 
 
 //「戻るボタン」-------------------------------------------------------------------------------
-//ボタンを押すために、番号が１つ下の写真に移動します
+//ボタンを押すために、番号が１つ下の写真に移動
     @IBAction func Back(_ sender: Any) {
         if Number > 1 {
-            //番号が1よりか大きい場合、１つ下の番号の写真に移動します
+            //番号が1よりか大きい場合、１つ下の番号の写真に移動
             Number -= 1
             var image = UIImage(named: "\(Number).jpg")
             Picture.image = image
@@ -85,7 +90,7 @@ class ViewController: UIViewController {
             PictureNumber.text = String(Number) + " / \(a)"
             
         } else {
-            //番号が1となった場合、写真番号がaである写真に移動します
+            //番号が1となった場合、写真番号がaである写真に移動
             Number = 20
             var image = UIImage(named: "\(a).jpg")
             Picture.image = image
@@ -96,20 +101,19 @@ class ViewController: UIViewController {
 //-------------------------------------------------------------------------------------------
     
  
-
 //「再生/停止ボタン」----------------------------------------------------------------------------
 //連続再生のためのタイマー関数 updateTimer
 @objc func updateTimer(_ timer: Timer) {
         self.timer_sec += 0.1
         //self.PictureNumber.text = String(format: "%.1f", timer_sec)
     
-        //b秒以上になった時点でタイマーを一度リセットし、写真の切り替えを行います
+        //b秒以上になった時点でタイマーを一度リセットし、写真の切り替えを行う
         if timer_sec > b {
             self.timer_sec = 0
             
             //この時の写真番号にて操作を分ける
             if Number < a {
-                //番号がa以下であれば次の番号に移動します
+                //番号がa以下であれば次の番号に移動
                 Number += 1
                 var image = UIImage(named: "\(Number).jpg")
                 Picture.image = image
@@ -117,7 +121,7 @@ class ViewController: UIViewController {
                 PictureNumber.text = String(Number) + " / \(a)"
                 
             } else {
-                //番号が枚数を超えた時、1番の写真に戻ります
+                //番号が枚数を超えた時、1番の写真に戻る
                 Number = 1
                 var image = UIImage(named: "1.jpg")
                 Picture.image = image
@@ -127,7 +131,7 @@ class ViewController: UIViewController {
         }
     }
     
-//再生を行います
+//再生を行う
 @IBAction func StartStop(_ sender: Any) {
     //ボタンを押した回数をLoopに保存する
     Loop += 1
@@ -152,6 +156,15 @@ self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #se
 }
 //--------------------------------------------------------------------------------------------
 
+
+//画面遷移--------------------------------------------------------------------------------------
+    //Next画面にデータを受け渡すprepare(for:method)を設定する
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextViewController:NextViewController = segue.destination as! NextViewController
+        //Next画面に写真ナンバーを受け渡す
+        nextViewController.Big = Number
+    }
+//---------------------------------------------------------------------------------------------
 }
 
 
