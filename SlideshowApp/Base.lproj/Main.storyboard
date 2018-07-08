@@ -77,6 +77,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QE-OT-fEZ">
                                 <rect key="frame" x="30" y="70" width="315" height="171.5"/>
                                 <connections>
+                                    <action selector="MoveToNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X0F-ft-aeW"/>
                                     <segue destination="WKD-Y9-S3G" kind="show" id="4lk-td-orf"/>
                                 </connections>
                             </button>
@@ -103,8 +104,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="BackStop" destination="PWI-Ee-94h" id="092-bE-pDL"/>
+                        <outlet property="GoStop" destination="Fkd-QN-2hC" id="eAo-0h-fVv"/>
                         <outlet property="Picture" destination="geI-GM-ofG" id="oYU-qx-Dhh"/>
                         <outlet property="PictureNumber" destination="k92-Af-u9Q" id="5Xq-C9-ov7"/>
+                        <outlet property="StartOrStop" destination="0IK-Ua-zme" id="wuM-nL-XBG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -159,7 +163,7 @@
                 <exit id="q8C-U4-kWc" userLabel="Exit" sceneMemberID="exit"/>
                 <pinchGestureRecognizer id="A0C-4y-qTP"/>
             </objects>
-            <point key="canvasLocation" x="892" y="134"/>
+            <point key="canvasLocation" x="895" y="134"/>
         </scene>
     </scenes>
     <resources>

@@ -21,8 +21,12 @@ class ViewController: UIViewController {
     //再生、停止ボタンを押した回数が偶数か奇数か判断するための変数
     var Guki: Int = 0
     //拡大画像画面から戻ってくるための「戻る」ボタンの設定
-    @IBAction func GoBack(_ segue: UIStoryboardSegue) {
-    }
+    @IBAction func GoBack(_ segue: UIStoryboardSegue) { }
+    //進むボタン、戻るボタンのOn/Offを設定するためにアウトレット
+    @IBOutlet weak var GoStop: UIButton!
+    @IBOutlet weak var BackStop: UIButton!
+    //再生・停止ボタンの表記を変更するためのアウトレット
+    @IBOutlet weak var StartOrStop: UIButton!
 //-----------------------------------------------------------------------------------------
     
     
@@ -41,8 +45,8 @@ class ViewController: UIViewController {
         //http://blog.officekoma.co.jp/2016/10/swiftuiimageviewcontentmode.html
         //ラベルに1番と記載する
         PictureNumber.text = String("1 / \(a)")
-        
-        
+        //再生・停止ボタンに「再生」と表記する
+        StartOrStop.setTitle("再生", for: .normal)
     }
 //-----------------------------------------------------------------------------------------
     
@@ -53,7 +57,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 //-----------------------------------------------------------------------------------------
-    
+
     
 //「進む」ボタン------------------------------------------------------------------------------
 //ボタンを押すたびに、番号が１つ上の写真に移動
@@ -91,7 +95,7 @@ class ViewController: UIViewController {
             
         } else {
             //番号が1となった場合、写真番号がaである写真に移動
-            Number = 20
+            Number = a
             var image = UIImage(named: "\(a).jpg")
             Picture.image = image
             //ラベルに写真番号を示す
@@ -141,16 +145,26 @@ class ViewController: UIViewController {
     Guki = Loop % 2
     
     if Guki == 1 {
-// タイマー関数の作成、始動
+// タイマー関数の作成、始動　スライドショーが始まる
         if self.timer == nil {
 self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimer(_:)), userInfo: nil, repeats: true)
+        //再生機能が作動している間は、進む、戻るボタンは押せない状態とする
+        self.GoStop.isEnabled = false
+        self.BackStop.isEnabled = false
+        //ラベルを停止に変更する
+        StartOrStop.setTitle("停止", for: .normal)
         }
         
         } else {
-        //タイマーを破棄する
+        //ボタンを押した回数が奇数であれば、タイマーを破棄する
         if self.timer !== nil {
-            self.timer.invalidate()
-            self.timer = nil
+           self.timer.invalidate()
+           self.timer = nil
+        //停止機能が作動している間は、進む、戻るボタンを押せる状態にする
+        self.GoStop.isEnabled = true
+        self.BackStop.isEnabled = true
+        //ラベルを再生に変更する
+        StartOrStop.setTitle("再生", for: .normal)
         }
     }
 }
@@ -163,6 +177,21 @@ self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #se
         let nextViewController:NextViewController = segue.destination as! NextViewController
         //Next画面に写真ナンバーを受け渡す
         nextViewController.Big = Number
+    }
+    
+    //画面遷移をする際には、スライドショーを一時停止する
+    @IBAction func MoveToNext(_ sender: Any) {
+        if self.timer !== nil {
+           self.timer.invalidate()
+           self.timer = nil
+        //停止機能が作動している間は、進む、戻るボタンを押せる状態にする
+        self.GoStop.isEnabled = true
+        self.BackStop.isEnabled = true
+        //ラベルを再生に変更する
+        StartOrStop.setTitle("再生", for: .normal)
+        //その分、「再生/停止」ボタンを押した回数を-1しておく
+        Loop -= -1
+        }
     }
 //---------------------------------------------------------------------------------------------
 }
