@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     var Loop: Int = 0
     //再生、停止ボタンを押した回数が偶数か奇数か判断するための変数
     var Guki: Int = 0
+    //拡大画像画面から戻ってくるための「戻る」ボタンの設定
+    @IBAction func GoBack(_ segue: UIStoryboardSegue) {
+    }
 //-----------------------------------------------------------------------------------------
     
     
